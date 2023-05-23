@@ -1,0 +1,17 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 3.5rem;
+  margin-bottom: 5rem;
+}
+
+.section-pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    margin: 0;
+  }
+}

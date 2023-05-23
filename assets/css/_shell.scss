@@ -1,0 +1,23 @@
+.shell {
+  margin: 0 auto;
+}
+
+.shell--full {
+  width: 100%;
+}
+
+.shell--fixed {
+  max-width: 1140px;
+}
+
+.container {
+  padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    padding: 0 1.25rem;
+  }
+
+  @media (min-width: 992px) {
+    padding: 0 1rem;
+  }
+}

@@ -1,0 +1,30 @@
+@import "variables";
+
+.header {
+  background-color: $background-secondary;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .header-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 1140px;
+    padding: 0 1rem;
+  }
+
+  img {
+    width: 28px;
+    height: 28px;
+  }
+
+  h1 {
+    font-size: 1.35rem;
+    margin: 0;
+    color: $text-primary;
+  }
+}

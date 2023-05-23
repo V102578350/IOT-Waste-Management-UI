@@ -1,0 +1,161 @@
+@import "variables";
+@import "keyframes";
+
+// Basic reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// Typography
+body,
+html {
+  font-family: "Arial", sans-serif;
+  background-color: $background-primary;
+  color: $text-primary;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+// Links
+a {
+  color: $interactive-color;
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $interactive-hover;
+  }
+}
+
+// Lists
+ul,
+ol {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+// Tables
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+td,
+th {
+  padding: 0.5rem;
+  border: 1px solid $border-color;
+}
+
+th {
+  background-color: $background-secondary;
+  color: $text-primary;
+}
+
+// Forms
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid $border-color;
+  background-color: $background-secondary;
+  color: $text-primary;
+
+  &:focus {
+    outline: none;
+    border-color: $interactive-color;
+  }
+}
+
+button {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background-color: $interactive-color;
+  border: none;
+  color: $text-primary;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: $interactive-hover;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: $background-secondary;
+    color: $text-secondary;
+    cursor: not-allowed;
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+// Miscellaneous
+hr {
+  border: none;
+  border-top: 1px solid $border-color;
+  margin-bottom: 1rem;
+}
+
+blockquote {
+  border-left: 4px solid $border-color;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+code,
+pre {
+  font-family: "Courier New", monospace;
+  background-color: $background-secondary;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+#data-section.loading {
+  filter: blur(4px);
+  transition: filter 1s;
+  pointer-events: none;
+}
+
+#sensorDataChart {
+  min-height: 400px; /* Set this to an appropriate value based on your chart size */
+}
+
+@import "shell";
+@import "header";
+@import "section";
+@import "section-bins";
+@import "section-bin-logs";

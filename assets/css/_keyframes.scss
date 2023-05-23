@@ -1,0 +1,33 @@
+@function adjustAlpha($color, $alpha) {
+  // Adjust the alpha channel of the color
+  @return rgba(red($color), green($color), blue($color), $alpha);
+}
+
+@mixin setPulseKeyframe($color) {
+  $startAlpha: 0.8;
+  $endAlpha: 0.3;
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0px 0px 5px adjustAlpha($color, $startAlpha);
+    }
+    50% {
+      box-shadow: 0px 0px 20px adjustAlpha($color, $endAlpha);
+    }
+    100% {
+      box-shadow: 0px 0px 5px adjustAlpha($color, $startAlpha);
+    }
+  }
+}
+
+@keyframes skeletonPulse {
+  0% {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}

@@ -1,0 +1,381 @@
+@keyframes skeletonPulse {
+  0% {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  font-family: "Arial", sans-serif;
+  background-color: #212529;
+  color: #f8f9fa;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #1abc9c;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+a:hover {
+  color: #1dd2af;
+}
+
+ul,
+ol {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+td,
+th {
+  padding: 0.5rem;
+  border: 1px solid #adb5bd;
+}
+
+th {
+  background-color: #343a40;
+  color: #f8f9fa;
+}
+
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #adb5bd;
+  background-color: #343a40;
+  color: #f8f9fa;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #1abc9c;
+}
+
+button {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background-color: #1abc9c;
+  border: none;
+  color: #f8f9fa;
+  transition: background-color 0.3s;
+}
+button:hover {
+  background-color: #1dd2af;
+}
+button:focus {
+  outline: none;
+}
+button:disabled {
+  background-color: #343a40;
+  color: #adb5bd;
+  cursor: not-allowed;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #adb5bd;
+  margin-bottom: 1rem;
+}
+
+blockquote {
+  border-left: 4px solid #adb5bd;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+code,
+pre {
+  font-family: "Courier New", monospace;
+  background-color: #343a40;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+#data-section.loading {
+  filter: blur(4px);
+  transition: filter 1s;
+  pointer-events: none;
+}
+
+#sensorDataChart {
+  min-height: 400px; /* Set this to an appropriate value based on your chart size */
+}
+
+.shell {
+  margin: 0 auto;
+}
+
+.shell--full {
+  width: 100%;
+}
+
+.shell--fixed {
+  max-width: 1140px;
+}
+
+.container {
+  padding: 0 1rem;
+}
+@media (min-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+.header {
+  background-color: #343a40;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header .header-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1140px;
+  padding: 0 1rem;
+}
+.header img {
+  width: 28px;
+  height: 28px;
+}
+.header h1 {
+  font-size: 1.35rem;
+  margin: 0;
+  color: #f8f9fa;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 3.5rem;
+  margin-bottom: 5rem;
+}
+
+.section-pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.section-pager p {
+  margin: 0;
+}
+
+.section-bins {
+  margin-top: 3rem;
+  width: 100%;
+}
+.section-bins .bins {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+@media screen and (max-width: 767px) {
+  .section-bins .bins {
+    grid-template-columns: 1fr;
+  }
+}
+.section-bins .bins.loaded .skeleton {
+  display: none;
+}
+.section-bins .bins .bin-item {
+  border: 2px solid #adb5bd;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+.section-bins .bins .bin-item.template {
+  display: none;
+}
+.section-bins .bins .bin-item.skeleton {
+  background-color: rgba(0, 0, 0, 0.1);
+  animation: skeletonPulse 1.5s infinite;
+}
+.section-bins .bins .bin-item.skeleton .bin-title.skeleton {
+  width: 100px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 100vw;
+}
+.section-bins .bins .bin-item.skeleton .bin-status .skeleton {
+  display: inline-block;
+  width: 24px;
+  height: 10px;
+  margin-right: 8px;
+  border-radius: 4px;
+}
+.section-bins .bins .bin-item.skeleton .bin-info .skeleton {
+  display: inline-block;
+  width: 100px;
+  height: 16px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.2);
+}
+.section-bins .bins .bin-item .bin-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 1rem;
+}
+.section-bins .bins .bin-item .bin-info ul li {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(52, 58, 64, 0.2);
+  margin: 0;
+}
+.section-bins .bins .bin-item .bin-info ul li:nth-child(odd) {
+  background-color: #343a40;
+}
+.section-bins .bins .bin-item .bin-info ul li span {
+  font-size: 14px;
+}
+.section-bins .bins .bin-item .bin-info ul li span:nth-child(1) {
+  font-weight: bold;
+}
+.section-bins .bins .bin-item .bin-info ul li div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.section-bins .bins .bin-item .bin-info ul li div img {
+  height: 22px;
+  cursor: pointer;
+}
+.section-bins .bins .bin-item[data-state="0"] img {
+  display: none;
+}
+.section-bins .bins .bin-item .bin-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.section-bins .bins .bin-item .bin-header h4 {
+  line-height: 0%;
+}
+.section-bins .bins .bin-item .bin-header .bin-status {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  background-color: #343a40;
+  padding: 0.35rem 0.5rem;
+  border-radius: 100vw;
+}
+.section-bins .bins .bin-item .bin-header .bin-status p {
+  font-size: 12px;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 0%;
+  font-weight: bold;
+}
+.section-bins .bins .bin-item .bin-header .bin-status span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.section-bins .bins .bin-item .bin-header .bin-status.online {
+  color: #1abc9c;
+}
+.section-bins .bins .bin-item .bin-header .bin-status.online span {
+  background-color: #1abc9c;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0px 0px 5px rgba(26, 188, 156, 0.8);
+  }
+  50% {
+    box-shadow: 0px 0px 20px rgba(26, 188, 156, 0.3);
+  }
+  100% {
+    box-shadow: 0px 0px 5px rgba(26, 188, 156, 0.8);
+  }
+}
+.section-bins .bins .bin-item .bin-header .bin-status.offline {
+  color: #ea6b84;
+}
+.section-bins .bins .bin-item .bin-header .bin-status.offline span {
+  background-color: #ea6b84;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0px 0px 5px rgba(234, 107, 132, 0.8);
+  }
+  50% {
+    box-shadow: 0px 0px 20px rgba(234, 107, 132, 0.3);
+  }
+  100% {
+    box-shadow: 0px 0px 5px rgba(234, 107, 132, 0.8);
+  }
+}
+.section-bins .bins .bin-item .bin-header .bin-title {
+  margin: 0;
+}
+
+.section-bin-logs {
+  margin-top: 2rem;
+}/*# sourceMappingURL=main.css.map */

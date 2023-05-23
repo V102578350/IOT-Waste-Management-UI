@@ -1,0 +1,22 @@
+// Dark grey theme color scheme
+$primary-dark: #212529; // Primary dark grey background
+$secondary-dark: #343a40; // Secondary dark grey for contrast
+$accent-light: #f8f9fa; // Light grey accent for text and highlights
+$accent-medium: #adb5bd; // Medium grey accent for borders and subtle elements
+$accent-color: #1abc9c; // Accent color for buttons, links, and interactive elements
+$red: #ea6b84;
+
+// Backgrounds
+$background-primary: $primary-dark;
+$background-secondary: $secondary-dark;
+
+// Text
+$text-primary: $accent-light;
+$text-secondary: $accent-medium;
+
+// Borders
+$border-color: $accent-medium;
+
+// Interactive elements
+$interactive-color: $accent-color;
+$interactive-hover: lighten($accent-color, 5%);
